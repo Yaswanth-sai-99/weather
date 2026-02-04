@@ -5,13 +5,16 @@ export default function Search({setCity, weatherdata}) {
 const [input,setInput] = useState('');
 const [error, setError] = useState('');
 
+const conditonkey = weatherdata ? weatherdata.currentConditions.icon.replaceAll("-").toLowerCase() : null;
+
 const handleSearch = (e)=>{
     // e.preventDefault();
     if (input.trim()){
         setCity(input);
+
         if(!input){
-        setError( 'Enter the City Name')
-    }
+            setError( 'Enter the City Name')
+        }
     } 
      
 }
