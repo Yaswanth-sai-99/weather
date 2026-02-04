@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import Search from './components/Search';
 
 export default function App() {
     const [city,setCity] = useState('');
@@ -17,15 +18,9 @@ useEffect(()=>{
 
   return (
    <div>
-    {weatherdata ? 
-
-    <div>
-        <h4>{weatherdata.currentconditions}</h4>
-        <p>{weatherdata.currentconditions.resolvedAddress}</p>
-    </div>
-    : <p>Loading ....</p>
-
-}
+   <Search
+   setCity = {setCity}
+   weatherdata = {weatherdata}/>
    </div>
   )
 }
