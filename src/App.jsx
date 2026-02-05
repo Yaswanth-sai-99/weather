@@ -9,6 +9,7 @@ export default function App() {
 
     useEffect(() => {
         if (!city) return;
+
         axios(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=EJ6UBL2JEQGYB3AA4ENASN62J&contentType=json`)
             .then(res => {
                 setWeatherData(res.data)
@@ -20,12 +21,13 @@ export default function App() {
 
 
     return (
+
         <div>
             <div className='relative'>
-                <div>
+                <div className='h-screen bg-cover'>
                     <Background weatherdata={weatherdata}/>
                 </div>
-                <div className='absolute top-10 left-20'>
+                <div className='absolute top-10 left-20 bg-transparent backdrop-blur-md'>
                     <Search
                         setCity={setCity}
                         weatherdata={weatherdata} />
