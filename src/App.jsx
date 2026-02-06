@@ -3,6 +3,7 @@ import axios from 'axios'
 import Background from './components/background';
 import Home from './components/home';
 import { BrowserRouter } from 'react-router-dom';
+import Navigation from './Routing/Navigation';
 
 export default function App() {
     const [city, setCity] = useState('');
@@ -22,7 +23,7 @@ export default function App() {
 
 
     return (
-<BrowserRouter>
+
        <div className="h-screen bg-contain bg-center relative">
   <Background weatherdata={weatherdata} />
 
@@ -30,6 +31,5 @@ export default function App() {
     <Home weatherdata={weatherdata} setCity={setCity} />
   </div>
 </div>
-</BrowserRouter>
     )
 }

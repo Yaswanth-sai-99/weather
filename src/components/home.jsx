@@ -17,7 +17,7 @@ export const bgURL = {
     partlycloudyday_bg: "https://i.ibb.co/RDfPqXz/pcn.jpg",
     partlycloudynight_bg: "https://i.ibb.co/h2p6Yhd/rain.webp",
     clearday_bg: "https://i.ibb.co/WGry01m/cd.jpg",
-    clearnight_bg: "https://i.ibb.co/kqtZ1Gx/cn.jpg",
+    clearnight_bg: "https://t3.ftcdn.net/jpg/12/61/86/82/360_F_1261868247_qUxuzLXwVgBDarMg8B9M4Mo125EpRju5.jpg",
     default_bg: "https://i.ibb.co/qNv7NxZ/pc.webp"
 }
 
