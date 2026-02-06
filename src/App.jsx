@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import Search from './components/Search';
 import Background from './components/background';
+import Home from './components/home';
+import { BrowserRouter } from 'react-router-dom';
 
 export default function App() {
     const [city, setCity] = useState('');
-    const [weatherdata, setWeatherData] = useState(null);
+    const [weatherdata, setWeatherData] = useState('');
 
     useEffect(() => {
         if (!city) return;
@@ -21,18 +22,14 @@ export default function App() {
 
 
     return (
+<BrowserRouter>
+       <div className="h-screen bg-contain bg-center relative">
+  <Background weatherdata={weatherdata} />
 
-        <div>
-            <div className='relative'>
-                <div className='h-screen bg-cover'>
-                    <Background weatherdata={weatherdata}/>
-                </div>
-                <div className='absolute top-10 left-20 bg-transparent backdrop-blur-md'>
-                    <Search
-                        setCity={setCity}
-                        weatherdata={weatherdata} />
-                </div>
-            </div>
-        </div>
+  <div className="absolute ">
+    <Home weatherdata={weatherdata} setCity={setCity} />
+  </div>
+</div>
+</BrowserRouter>
     )
 }

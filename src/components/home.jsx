@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import Weeklycard from "./Weeklycard";
+import Search from "./Search";
+
+
 export const iconURL = {
     rain: "https://i.ibb.co/kBd2NTS/39.png",
     partlycloudyday: "https://i.ibb.co/PZQXH8V/27.png",
@@ -18,9 +22,12 @@ export const bgURL = {
 }
 
 
-export default function home() {
+export default function Home({ setCity, weatherdata }) {
 
     return (
-        <div>home</div>
+        <div className="w-[1100px] h-[650px] rounded-xl  flex overflow-hidden m-20">
+            <Search weatherdata={weatherdata} setCity={setCity} />
+            <Weeklycard weatherdata={weatherdata} />
+        </div>
     )
 }

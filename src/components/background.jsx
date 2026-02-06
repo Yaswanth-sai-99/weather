@@ -8,7 +8,7 @@ export default function Background({weatherdata}) {
     const backgroundimage = bgURL[`${conditionkey}_bg`] || bgURL.default_bg
   return (
     <div >
-        <img src={backgroundimage} alt={conditionkey} className="w-full h-full object-cover object-center" />
+        <img src={backgroundimage} alt={conditionkey}  className="fixed inset-0 -z-10 bg-contain " />
     </div>
   )
 }
