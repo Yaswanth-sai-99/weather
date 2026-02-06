@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Background from './components/background';
 import Home from './components/home';
-import { BrowserRouter } from 'react-router-dom';
-import Navigation from './Routing/Navigation';
 
 export default function App() {
-    const [city, setCity] = useState('');
+    const [city, setCity] = useState('banglore');
     const [weatherdata, setWeatherData] = useState('');
 
     useEffect(() => {

@@ -68,7 +68,7 @@ if (!weatherdata) return;
 
     return (
         <div>
-            <div className='grid grid-cols-7 gap-3 mt-5'>
+            <div className='grid grid-cols-7 gap-3 mt-15'>
                 {weekdays.map((item, index) => {
 
                     const dayCondition = item.icon.replaceAll("-", "").toLowerCase();
@@ -85,7 +85,7 @@ if (!weatherdata) return;
 
             </div>
             <div>
-                <h3 className='font-semibold mt-10'>Today Highlights</h3>
+                <h3 className='font-semibold mt-20 text-2xl'>Today's Highlights</h3>
             </div>
 
             <div className='grid grid-cols-3'>
@@ -99,7 +99,9 @@ if (!weatherdata) return;
                         </div>)
                 })}
             </div>
-        </div>
-
+            <div className='flex flex-grow flex-col items-center'>
+            <p className='font-bold mt-30'>Weather Prediction App By <span className='text-green-700 text-2xl ps-3'><u>S Sai Yaswanth</u></span></p>
+            </div>
+    </div>
     )
 }

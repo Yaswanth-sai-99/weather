@@ -25,7 +25,7 @@ export const bgURL = {
 export default function Home({ setCity, weatherdata }) {
 
     return (
-        <div className="w-[1100px] h-[650px] rounded-xl  flex overflow-hidden m-20">
+        <div className="w-[1100px] h-fit rounded-xl  flex overflow-hidden m-20">
             <Search weatherdata={weatherdata} setCity={setCity} />
             <Weeklycard weatherdata={weatherdata} />
         </div>
