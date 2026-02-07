@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Today from '../pages/Today'
-import Weekly from '../pages/weekly'
+import Weekly from '../pages/Weekly'
 
 export default function Navigation({weatherdata, unit}) {
   return (
