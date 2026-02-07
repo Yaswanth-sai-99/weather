@@ -67,7 +67,7 @@ export default function Today({ weatherdata, unit }) {
 
 
   return (
-    <div className='mt-7'>
+    <div className='mt-10'>
       <div className='grid grid-cols-7 gap-2 '>
         {Hourlydata.map((hour, index) => {
           const hourkey = hour.icon.replaceAll("-", "").toLowerCase();

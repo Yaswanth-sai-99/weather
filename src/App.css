@@ -1,0 +1,29 @@
+/* For Hover effect on headings */
+
+.nav-item{
+   position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.nav-tip {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-top: 8px;
+    transform: translateX(-50%);
+    border: transparent;
+    border-radius: 8px;
+    background: #dbdada;
+    color: rgb(21, 20, 20);
+    padding: 5px 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+}
+.nav-item:hover .nav-tip{
+    visibility: visible;
+    opacity: 1;
+}
+

@@ -78,7 +78,7 @@ if (!weatherdata) return;
 
     return (
         <div>
-            <div className='grid grid-cols-7 gap-3 mt-15'>
+            <div className='grid grid-cols-7 gap-3 mt-10'>
                 {weekdays.map((item, index) => {
 
                     const dayCondition = item.icon.replaceAll("-", "").toLowerCase();
