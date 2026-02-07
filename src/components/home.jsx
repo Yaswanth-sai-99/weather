@@ -22,12 +22,12 @@ export const bgURL = {
 }
 
 
-export default function Home({ setCity, weatherdata }) {
+export default function Home({ setCity, weatherdata,unit, setUnit }) {
 
     return (
         <div className="w-[1100px] h-fit rounded-xl  flex overflow-hidden m-20">
             <Search weatherdata={weatherdata} setCity={setCity} />
-            <Weeklycard weatherdata={weatherdata} />
+            <Weeklycard weatherdata={weatherdata} unit={unit} setUnit={setUnit} />
         </div>
     )
 }

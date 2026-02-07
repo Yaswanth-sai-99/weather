@@ -6,6 +6,7 @@ import Home from './components/home';
 export default function App() {
     const [city, setCity] = useState('banglore');
     const [weatherdata, setWeatherData] = useState('');
+    const [unit, setUnit] = useState('C');
 
     useEffect(() => {
         if (!city) return;
@@ -22,12 +23,12 @@ export default function App() {
 
     return (
 
-       <div className="h-screen bg-contain bg-center relative">
-  <Background weatherdata={weatherdata} />
+        <div className="h-screen bg-contain bg-center relative">
+            <Background weatherdata={weatherdata} />
 
-  <div className="absolute ">
-    <Home weatherdata={weatherdata} setCity={setCity} />
-  </div>
-</div>
+            <div className="absolute ">
+                <Home weatherdata={weatherdata} setCity={setCity} unit={unit} setUnit={setUnit}/>
+            </div>
+        </div>
     )
 }

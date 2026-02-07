@@ -1,14 +1,22 @@
 import React, { useState } from 'react'
 import { iconURL } from '../components/home';
 
-export default function Today({ weatherdata }) {
+export default function Today({ weatherdata, unit }) {
   if (!weatherdata) return <p>Loading Hourly Forecast</p>;
+
+  // for Temperature convertion 
+  const formattemp = (temp)=>{
+    if(unit === 'C'){
+      return Math.round(temp);
+    }else return Math.round((temp*9)/5 +32); // converting into farenheits
+
+  }
 
   // Today highlights list
   const UVindex = (UV) => {
     if (UV >= 7) {
       return 'High'
-    } else if (UV < 4 & UV > 1) {
+    } else if (UV < 4 || UV > 1) {
       return 'Moderate'
     } else
       return "Low"
@@ -17,7 +25,7 @@ export default function Today({ weatherdata }) {
   const Humidity = (water) => {
     if (water >= 80) {
       return 'High';
-    } else if (water >= 50 & water <= 79) {
+    } else if (water >= 50 || water <= 79) {
       return 'Moderate';
     } else return 'Low'
   }
@@ -25,7 +33,7 @@ export default function Today({ weatherdata }) {
   const AitQuality = (Air) => {
     if (Air >= 60) {
       return 'danger 🚫';
-    } else if (Air >= 40 & Air <= 59) {
+    } else if (Air >= 40 || Air <= 59) {
       return 'Warning ⚠️';
     } else return 'good 👍'
   }
@@ -69,7 +77,7 @@ export default function Today({ weatherdata }) {
               <div className='bg-white rounded-xl flex flex-col items-center'>
                 <h4>{hour.datetime}</h4>
                 <img src={HourIcon} alt={hourkey} className='w-10 h-10 my-4' />
-                <p>{hour.temp}°C</p>
+                <p>{formattemp(hour.temp)}°{unit}</p>
               </div>
             </div>
           )

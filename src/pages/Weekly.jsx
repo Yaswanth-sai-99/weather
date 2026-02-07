@@ -1,6 +1,16 @@
 import React, { useState } from 'react'
 
-export default function Weekly({ weatherdata }) {
+export default function Weekly({ weatherdata, unit }) {
+
+    // Covertion celcius to farenheit
+
+    const formattemp = (temp)=>{
+        if(unit === 'C'){
+            return Math.round(temp);
+        }else {
+            return Math.round(temp *9)/5 + 32; 
+        }
+    }
 
     const UVindex = (UV) => {
         if (UV >= 7) {
@@ -78,7 +88,7 @@ if (!weatherdata) return;
                         <div key={index} className='h-35 flex flex-col items-center border border-transparent p-2 rounded-xl bg-white'>
                             <h4>{new Date(item.datetime).toLocaleDateString('en-US', { weekday: 'long' })}</h4>
                             <img src={dayIcon} alt={dayCondition} />
-                            <p className='mt-auto'>{item.temp}°C</p>
+                            <p className='mt-auto'>{formattemp(item.temp)}°{unit}</p>
                         </div>
                     )
                 })}
