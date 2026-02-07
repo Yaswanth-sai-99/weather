@@ -39,7 +39,7 @@ export default function Search({ setCity, weatherdata }) {
     }
 
     return (
-        <div className='w-[30%]  rounded-l-xl bg-white/40 backdrop-blur-md flex flex-col'>
+        <div className='w-[30%] md:w-[30%]  rounded-l-xl bg-white/40 backdrop-blur-md flex flex-col'>
             <form onSubmit={handleSearch} className='flex items-center p-7 px-9 bg-transparent rounded-l-xl'>
                 <input className=' focus:outline-none p-2 border border-white bg-white rounded-l-md'
                     type="text"

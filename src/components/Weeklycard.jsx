@@ -6,7 +6,7 @@ import Navigation from '../Routing/Navigation';
 export default function Weeklycard({ weatherdata, setUnit, unit }) {
 
     return (
-        <div className='w-[85%] p-8 bg-gray-100 rounded-r-3xl'>
+        <div className='w-[85%] md:w-[85%] p-8 bg-gray-100 rounded-r-3xl'>
             <div className='flex justify-between items-center'>
                 <div className='flex gap-2'>
                     <NavLink to="/today">{({ isActive }) => (<button className={` ${isActive ? 'text-blue-700 px-4 py-2 rounded-md font-futuristic font-medium' : 'text-black px-4 py-2 rounded-md font-futuristic font-medium'}`}>Today</button>)}</NavLink>
