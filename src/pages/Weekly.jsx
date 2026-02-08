@@ -37,7 +37,7 @@ export default function Weekly({ weatherdata, unit }) {
         }else return 'good 👍'
     }
 
-if (!weatherdata) return;
+if (!weatherdata) return <p>Loading Weekly Forecast</p>;;
 
     // Today Highlights data 
     const weekdays = weatherdata.days.slice(0, 7);

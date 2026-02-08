@@ -1,14 +1,43 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { iconURL } from '../components/home';
+import axios from 'axios';
 
 export default function Today({ weatherdata, unit }) {
   if (!weatherdata) return <p>Loading Hourly Forecast</p>;
+  const [air, setAir] = useState(null);
+
+  useEffect(() => {
+    const cityname = weatherdata.resolvedAddress || 'banglore';
+
+    axios(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityname}?unitGroup=metric&include=hours&elements=aqius&key=EJ6UBL2JEQGYB3AA4ENASN62J&contentType=json`)
+      .then(Response => {
+        setAir(Response.data)
+        console.log(Response.data)
+      })
+
+  }, [weatherdata]);
+
+  const Hourlydata = weatherdata.days[0].hours;
+  const today = weatherdata.days[0]
+
+  const CurrentHourIndex = new Date().getHours();
+  const CurrentHourData = Hourlydata[CurrentHourIndex]
+
+  // For AIRQUALITY..
+
+  const AirData = air?.currentConditions?.aqius ?? air?.days?.[0]?.hours?.[CurrentHourIndex]?.aqius;
+
+  const Visibility = CurrentHourData?.visibility;
+  const humidity = CurrentHourData?.humidity
+  const windspeed = CurrentHourData?.windspeed
+  const uvindex = CurrentHourData?.uvindex
+
 
   // for Temperature convertion 
-  const formattemp = (temp)=>{
-    if(unit === 'C'){
+  const formattemp = (temp) => {
+    if (unit === 'C') {
       return Math.round(temp);
-    }else return Math.round((temp*9)/5 +32); // converting into farenheits
+    } else return Math.round((temp * 9) / 5 + 32); // converting into farenheits
 
   }
 
@@ -30,22 +59,14 @@ export default function Today({ weatherdata, unit }) {
     } else return 'Low'
   }
 
-  const AitQuality = (Air) => {
-    if (Air >= 60) {
+  const AIRQuality = (Air) => {
+    if (Air >= 100) {
       return 'danger 🚫';
-    } else if (Air >= 40 || Air <= 59) {
+    } else if (Air >= 50) {
       return 'Warning ⚠️';
-    } else return 'good 👍'
+    }  
+    else return 'good 👍'
   }
-
-  const Hourlydata = weatherdata.days[0].hours
-  const today = Hourlydata[0]
-
-  const avgUV = Hourlydata.reduce((acc, day) => acc + day.uvindex, 0) / 7;
-  const avgWind = Hourlydata.reduce((acc, day) => acc + day.windspeed, 0) / 7;
-  const avgHumidity = Hourlydata.reduce((acc, day) => acc + day.humidity, 0) / 7;
-  const avgVisibility = Hourlydata.reduce((acc, day) => acc + day.visibility, 0) / 7;
-  const avgAir = Hourlydata.reduce((acc, day) => acc + day.windgust, 0) / 7;
 
   // time change
   const formatTime = (timeStr) => {
@@ -57,12 +78,12 @@ export default function Today({ weatherdata, unit }) {
   };
 
   const HighLights = [
-    { label: "UV Index", value: avgUV.toFixed(1), status: UVindex(avgUV) },
-    { label: "Wind Status", value: avgWind.toFixed(1), status: "KM/h" },
+    { label: "UV Index", value: uvindex, status: UVindex(uvindex) },
+    { label: "Wind Status", value: windspeed, status: "KM/h" },
     { label: "Sunrise & Sunset", value: formatTime(today.sunrise), status: formatTime(today.sunset) },
-    { label: "Humidity", value: avgHumidity.toFixed(1), status: Humidity(avgHumidity) },
-    { label: "Visibility", value: avgVisibility.toFixed(1), status: today.conditions },
-    { label: "Air Quality", value: avgAir.toFixed(1), status: AitQuality(avgAir) }
+    { label: "Humidity", value: humidity, status: Humidity(humidity) },
+    { label: "Visibility", value: Visibility, status: today.conditions },
+    { label: "Air Quality", value:AirData, status: AIRQuality(AirData) }
   ]
 
 
@@ -104,3 +125,4 @@ export default function Today({ weatherdata, unit }) {
     </div>
   )
 }
+

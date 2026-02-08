@@ -16,7 +16,7 @@ export default function Search({ setCity, weatherdata }) {
 
 
     const TimeString = weatherdata ? weatherdata.currentConditions.datetime : '00:00:00'
-    const formattedTime = new Date(`2000-01-01T${TimeString}`);
+    const formattedTime = new Date(`2026-01-01T${TimeString}`);
     const Time = formattedTime.toLocaleTimeString('en-US',
         {
             hour: '2-digit',
@@ -39,7 +39,7 @@ export default function Search({ setCity, weatherdata }) {
     }
 
     return (
-        <div className='w-[30%] md:w-[30%]  rounded-l-xl bg-white/40 backdrop-blur-md flex flex-col'>
+        <div className='w-[30%]  rounded-l-xl bg-white/40 backdrop-blur-md flex flex-col'>
             <form onSubmit={handleSearch} className='flex items-center p-7 px-9 bg-transparent rounded-l-xl'>
                 <input className=' focus:outline-none p-2 border border-white bg-white rounded-l-md'
                     type="text"
@@ -59,13 +59,13 @@ export default function Search({ setCity, weatherdata }) {
                         <p className='text-6xl px-5'> {weatherdata.currentConditions.temp}°C</p>
                         <p className='text-md px-5'>{dayname},{Time}</p>
                         <hr className='mx-5 text-white mt-5'/>
-                        <p className='mx-5 mt-5'>{weatherdata.days[0].icon}, {weatherdata.currentConditions.conditions}</p>
+                        <p className='mx-5 mt-5'>{weatherdata.currentConditions.icon}, {weatherdata.currentConditions.conditions}</p>
                         <p className='mx-5'> Rain Chance perc - {weatherdata.days[0].precipprob}%</p>
                     </div>
-                    <div className='p-6 mt-60'>
+                    <div className='p-6 mt-60 '>
                         <div className='flex items-center gap-2 justify-center bg-black/5 p-3 rounded-lg'>
                            <span className="text-red-500 text-lg">📍</span>
-                           <h3 className='font-bold text-sm '>
+                           <h3 className='font-bold text-sm mt-auto '>
                                 {weatherdata.resolvedAddress}
                            </h3>
                         </div>
