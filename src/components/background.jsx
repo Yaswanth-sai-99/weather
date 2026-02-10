@@ -11,7 +11,7 @@ export default function Background({ weatherdata }) {
   return (
     <div
       style={{ backgroundImage: `url(${backgroundimage})` }}
-      className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat w-full h-full">
+      className="backgroundmedia fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat w-full h-full">
     </div>
   )
 }

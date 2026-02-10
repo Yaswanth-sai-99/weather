@@ -39,7 +39,7 @@ export default function Search({ setCity, weatherdata }) {
     }
 
     return (
-        <div className='w-[30%]  rounded-l-xl bg-white/40 backdrop-blur-md flex flex-col'>
+        <div id='searchmedia' className='w-[40%] searchwidth rounded-l-xl bg-white/40 backdrop-blur-md flex flex-col'>
             <form onSubmit={handleSearch} className='flex items-center p-7 px-9 bg-transparent rounded-l-xl'>
                 <input className=' focus:outline-none p-2 border border-white bg-white rounded-l-md'
                     type="text"
@@ -48,12 +48,12 @@ export default function Search({ setCity, weatherdata }) {
                     onChange={(e) => setInput(e.target.value)}
                 />
 
-                <button type='submit' className='bg-blue-400 p-2 rounded-r-md '>Search</button>
+                <button type='submit'  className='bg-blue-400 p-2 rounded-r-md '>Search</button>
             </form>
             <p className='text-red-600 block flex items-center justify-center'>{error}</p>
 
             {weatherdata && (
-                <div>
+                <div className='searchwidthimg'>
                     <div>
                         <img src={weathericon} alt={conditionkey} className='w-50 flex items-center justify-center mx-15 pb-20' />
                         <p className='text-6xl px-5'> {weatherdata.currentConditions.temp}°C</p>
@@ -62,7 +62,7 @@ export default function Search({ setCity, weatherdata }) {
                         <p className='mx-5 mt-5'>{weatherdata.currentConditions.icon}, {weatherdata.currentConditions.conditions}</p>
                         <p className='mx-5'> Rain Chance perc - {weatherdata.days[0].precipprob}%</p>
                     </div>
-                    <div className='p-6 mt-60 '>
+                    <div className='p-6 mt-10 w-full '>
                         <div className='flex items-center gap-2 justify-center bg-black/5 p-3 rounded-lg'>
                            <span className="text-red-500 text-lg">📍</span>
                            <h3 className='font-bold text-sm mt-auto '>

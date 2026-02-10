@@ -55,7 +55,7 @@ if (!weatherdata) return <p>Loading Weekly Forecast</p>;;
             hour: '2-digit',
             minute: '2-digit',
             hour12: true
-        }).toLowerCase();
+        })
     };
 
     const HighLights = [
@@ -77,7 +77,7 @@ if (!weatherdata) return <p>Loading Weekly Forecast</p>;;
     }
 
     return (
-        <div>
+        <div id='weeklymedia'>
             <div className='grid grid-cols-7 gap-3 mt-10'>
                 {weekdays.map((item, index) => {
 

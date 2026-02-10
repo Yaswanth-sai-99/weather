@@ -25,7 +25,7 @@ export const bgURL = {
 export default function Home({ setCity, weatherdata,unit, setUnit }) {
 
     return (
-        <div className=" h-fit w-[1100px] rounded-xl  flex m-20">
+        <div id='Homemedia' className=" h-fit max-w-[1100px] w-[100%] rounded-xl  flex m-20">
             <Search weatherdata={weatherdata} setCity={setCity} />
             <Weeklycard weatherdata={weatherdata} unit={unit} setUnit={setUnit} />
         </div>
