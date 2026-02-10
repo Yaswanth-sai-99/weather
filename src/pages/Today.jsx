@@ -12,7 +12,7 @@ export default function Today({ weatherdata, unit }) {
     axios(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityname}?unitGroup=metric&include=hours&elements=aqius&key=EJ6UBL2JEQGYB3AA4ENASN62J&contentType=json`)
       .then(Response => {
         setAir(Response.data)
-        console.log(Response.data)
+        // console.log(Response.data)
       })
 
   }, [weatherdata]);
@@ -36,7 +36,7 @@ export default function Today({ weatherdata, unit }) {
   // for Temperature convertion 
   const formattemp = (temp) => {
     if (unit === 'C') {
-      return Math.round(temp);
+      return temp;
     } else return Math.round((temp * 9) / 5 + 32); // converting into farenheits
 
   }

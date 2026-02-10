@@ -6,7 +6,7 @@ export default function Weekly({ weatherdata, unit }) {
 
     const formattemp = (temp)=>{
         if(unit === 'C'){
-            return Math.round(temp);
+            return temp;
         }else {
             return Math.round(temp *9)/5 + 32; 
         }

@@ -15,15 +15,13 @@ export default function Search({ setCity, weatherdata }) {
     const dayname = date.toLocaleDateString('en-US', { weekday: 'long' })
 
 
-    const TimeString = weatherdata ? weatherdata.currentConditions.datetime : '00:00:00'
-    const formattedTime = new Date(`2026-01-01T${TimeString}`);
-    const Time = formattedTime.toLocaleTimeString('en-US',
-        {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: true
-        }).toLowerCase() || "Unavailable Time"
+        const Time = new Date().toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+    });
 
+    
     const handleSearch = (e) => {
         e.preventDefault();
 
@@ -48,7 +46,7 @@ export default function Search({ setCity, weatherdata }) {
                     onChange={(e) => setInput(e.target.value)}
                 />
 
-                <button type='submit'  className='bg-blue-400 p-2 rounded-r-md '>Search</button>
+                <button type='submit' className='bg-blue-400 p-2 rounded-r-md '>Search</button>
             </form>
             <p className='text-red-600 block flex items-center justify-center'>{error}</p>
 
@@ -56,18 +54,18 @@ export default function Search({ setCity, weatherdata }) {
                 <div className='searchwidthimg'>
                     <div>
                         <img src={weathericon} alt={conditionkey} className='w-50 flex items-center justify-center mx-15 pb-20' />
-                        <p className='text-6xl px-5'> {weatherdata.currentConditions.temp}°C</p>
+                        <p className='text-6xl px-5'> {weatherdata.days[0].hours[0].temp}°C</p>
                         <p className='text-md px-5'>{dayname},{Time}</p>
-                        <hr className='mx-5 text-white mt-5'/>
+                        <hr className='mx-5 text-white mt-5' />
                         <p className='mx-5 mt-5'>{weatherdata.currentConditions.icon}, {weatherdata.currentConditions.conditions}</p>
                         <p className='mx-5'> Rain Chance perc - {weatherdata.days[0].precipprob}%</p>
                     </div>
                     <div className='p-6 mt-10 w-full '>
                         <div className='flex items-center gap-2 justify-center bg-black/5 p-3 rounded-lg'>
-                           <span className="text-red-500 text-lg">📍</span>
-                           <h3 className='font-bold text-sm mt-auto '>
+                            <span className="text-red-500 text-lg">📍</span>
+                            <h3 className='font-bold text-sm mt-auto '>
                                 {weatherdata.resolvedAddress}
-                           </h3>
+                            </h3>
                         </div>
                     </div>
                 </div>
